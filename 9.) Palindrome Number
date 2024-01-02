@@ -1,0 +1,36 @@
+class Solution {
+//this code required some improvement for better runtime & space complexity 
+
+public:
+    bool isPalindrome(int x) {
+
+    if(x<0)
+      {
+        return false;
+      }
+     vector<int> y;
+     while (x > 0)
+      {
+        y.push_back(x % 10);
+        x = x/ 10;
+     }
+
+     int n = y.size();
+     int start=0;
+     int end=n-1;
+
+     while(start <= end)
+     {
+         if(y[start] == y[end])
+         {
+             start++;
+             end--;
+         }
+         else
+         {
+             return false;
+         }
+     }
+      return true;
+    }
+};
