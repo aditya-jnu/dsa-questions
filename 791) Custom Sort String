@@ -1,0 +1,19 @@
+//You learn more about why static string sulotion :: str in oops
+
+class Solution {
+public:
+    static std::string srt;  
+
+    static bool compare(char char1, char char2) {
+        return (srt.find(char1) < srt.find(char2));
+    }
+
+    std::string customSortString(std::string order, std::string s) {
+        srt = order;
+        std::sort(s.begin(), s.end(), compare);
+        return s;
+    }
+};
+
+
+std::string Solution::srt;
