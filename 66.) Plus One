@@ -1,0 +1,53 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        
+        int integer = 1;
+
+      for (int i = digits.size() - 1; i >= 0; i--) 
+      {
+         int add = digits[i] + integer;
+         digits[i] = add % 10; 
+         integer = add / 10;       
+
+         if (integer == 0) 
+          {
+             break;
+          }
+       }
+
+       if (integer > 0)
+        {
+          digits.insert(digits.begin(), integer);
+        }
+
+     return digits;
+    }    
+};
+
+//find mistake in this code this is the second approch to achive the goal
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        
+        int integer = 0;
+        for(int i=0; i<digits.size(); i++)
+        {
+            integer = integer*10 + digits[i];
+        }
+
+        integer = integer + 1;
+
+       // void integerToArray(int integer, std::vector<int>& digits) {
+    while (integer > 0) 
+    {
+        digits.push_back(integer % 10);  // Extract the last digit
+        integer /= 10;  // Remove the last digit
+    }
+
+    // Reverse the vector to get digits in the correct order
+    std::reverse(digits.begin(), digits.end());
+    
+      return 0;
+    }    
+};
