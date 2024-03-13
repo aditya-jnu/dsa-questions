@@ -1,0 +1,31 @@
+#include <iostream>
+
+class Solution {
+public:
+    int pivotInteger(int n) {
+        if (n == 1) {
+            return 1;
+        }
+
+        int start = 0;
+        int end = n - 1;
+
+        auto sum = [](int x) {
+            return (x * (x + 1)) / 2;
+        };
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            if (sum(mid) == (sum(n) - sum(mid - 1))) {
+                return mid;
+            } else if (sum(mid) < (sum(n) - sum(mid - 1))) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+};
