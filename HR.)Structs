@@ -1,0 +1,32 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    struct Student {
+    int age;
+    string name;
+    string lastName;
+    int standard;
+    };
+    
+    //this for declearing the instance of student
+    Student p;
+    
+    //for i/p
+    cin>> p.age;
+    cin>> p.name;
+    cin>> p.lastName;
+    cin>> p.standard;
+    
+    //for o/p in single line
+    cout<<p.age<<" "<<p.name<<" "<<p.lastName<<" "<<p.standard<<endl;
+    
+    return 0;
+
+}
