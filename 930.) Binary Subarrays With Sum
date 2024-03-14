@@ -1,0 +1,21 @@
+#include <vector>
+
+class Solution {
+public:
+    int numSubarraysWithSum(vector<int>& nums, int goal) {
+        int size = nums.size();
+        int count = 0;
+        int sum = 0;
+        unordered_map<int, int> sumCount;
+        
+        for (int i = 0; i < size; i++) {
+            sum += nums[i];
+            if (sum == goal)
+                count++;
+            if (sumCount.find(sum - goal) != sumCount.end())
+                count += sumCount[sum - goal];
+            sumCount[sum]++;
+        }
+        return count;
+    }
+};
