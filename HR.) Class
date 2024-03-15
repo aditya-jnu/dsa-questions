@@ -1,0 +1,32 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    class Student {
+        public:
+        int age;
+        string first_name;
+        string last_name;
+        int standard;
+    };   
+    Student p;
+    
+    cin>> p.age;
+    cin>> p.first_name;
+    cin>> p.last_name;
+    cin>> p.standard;
+    
+    cout<<p.age<<endl<<p.last_name<<","<<" "<<p.first_name<<endl<<p.standard<<endl;
+    
+    cout<<endl;
+    
+    cout<<p.age<<","<<p.first_name<<","<<p.last_name<<","<<p.standard<<endl;
+    
+    return 0;
+}
