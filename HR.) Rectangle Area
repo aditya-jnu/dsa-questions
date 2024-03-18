@@ -1,0 +1,40 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+class Rectangle {
+public:
+    int width;
+    int height;
+public:
+    void read_input() {
+        cin >> width >> height;
+    }
+};
+
+class RectangleArea: public Rectangle {
+public:
+    int display() {
+        return width * height;
+    }
+};
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+
+    // Declare a RectangleArea object
+    RectangleArea r_area;
+    
+    // Read the width and height
+    r_area.read_input();
+    
+    cout << r_area.width << " " << r_area.height << endl;
+    
+    cout << r_area.display();
+    
+    return 0;
+}
