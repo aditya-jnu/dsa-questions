@@ -1,0 +1,22 @@
+#include <vector>
+#include <unordered_map>
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        unordered_map<int, int> count;
+
+        for (int i : nums) {
+            count[i]++;
+        }
+
+//pair.second-no. of times any no came
+//pair.first-no itself
+        for (const auto& pair : count) {
+            if (pair.second == 1) {
+                return pair.first;
+            }
+        }
+        return -1;
+    }
+};
