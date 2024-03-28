@@ -18,7 +18,7 @@ public:
     }
 };
 
-2nd method is:
+Now 2nd method:
 
 class Solution {
 public:
