@@ -1,4 +1,4 @@
-1.) Method little longer approch
+1.) Method little longer approach
 class Solution {
 public:
     bool isAnagram(string s, string t) {
