@@ -20,6 +20,7 @@ public:
 };
 
 2.) method 2 to over came the tle i decide to use unoderded_set that keep track and match the current num to the previouslly stored
+this method use O(n) time complexity
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
