@@ -1,0 +1,37 @@
+1.) method that usses O(n^2) so that 3 test cases exceed the time limit
+User
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int size = nums.size();
+        
+        for(int i=0; i<size-1; i++)
+        {
+            for(int j=i+1; j<size; j++)
+            {
+                if(nums[i]==nums[j])
+                {
+                    return nums[i];
+                }
+            }
+        }
+        return -1;
+    }
+};
+
+2.) method 2 to over came the tle i decide to use unoderded_set that keep track and match the current num to the previouslly stored
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_set<int> seen;
+        
+        for(int num : nums) {
+            if (seen.find(num) != seen.end()) {
+                return num;
+            }
+            seen.insert(num);
+        }
+        
+        return -1;
+    }
+};
