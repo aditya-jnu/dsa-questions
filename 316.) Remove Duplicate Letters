@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string removeDuplicateLetters(string s) {
+        unordered_map<char, int> last_occurrence;
+        unordered_set<char> seen;
+        string result;
+        
+        for (int i = 0; i < s.size(); ++i) {
+            last_occurrence[s[i]] = i;
+        }
+        
+        for (int i = 0; i < s.size(); ++i) {
+            if (!seen.count(s[i])) {
+                while (!result.empty() && s[i] < result.back() && last_occurrence[result.back()] > i) {
+                    seen.erase(result.back());
+                    result.pop_back();
+                }
+                result.push_back(s[i]);
+                seen.insert(s[i]);
+            }
+        }
+        return result;
+    }
+};
