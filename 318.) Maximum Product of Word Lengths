@@ -1,0 +1,77 @@
+this is my real concept code but it give Run time error
+so i take help so in future i try to solve this problem again 
+class Solution {
+public:
+
+    int maxProduct(vector<string>& words) {
+        int size = words.size();
+        int maxlength = 0;
+        unordered_set<int> ans;
+        for(const auto& word:words)
+        {
+            int length = word.length();
+            ans.insert(length);
+        }
+
+        for(int i=0; i<size-1; i++)
+        {
+            for(int j=i+1; i<size; j++)
+            {
+                if(noCommonletter(words[i], words[j]))
+                {
+                    int product = words[i].length() * words[j].length();
+                    maxlength = max(product, maxlength);
+                }
+            }
+            //return maxlength;
+        }
+        
+       
+        return maxlength;
+    }
+         bool noCommonletter(string &word1 , string &word2)
+        {
+            for(char c : word1)
+            {
+                if(word2.find(c) != string::npos)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+};
+
+Help method:
+
+class Solution {
+public:
+    int maxProduct(vector<string>& words) {
+        int n = words.size();
+        vector<int> bitmask(n);
+        unordered_map<int, int> maxLen;
+        
+        for (int i = 0; i < n; ++i) 
+        {
+            int bitmaskWord = 0;
+            for (char c : words[i]) 
+            {
+                bitmaskWord |= 1 << (c - 'a');
+            }
+            bitmask[i] = bitmaskWord;
+            maxLen[bitmaskWord] = max(maxLen[bitmaskWord], (int)words[i].size());
+        }
+        
+        int maxLength = 0;
+        for (int i = 0; i < n - 1; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                if ((bitmask[i] & bitmask[j]) == 0) 
+                {
+                    maxLength = max(maxLength, maxLen[bitmask[i]] * maxLen[bitmask[j]]);
+                }
+            }
+        }
+        
+        return maxLength;
+    }
+};
