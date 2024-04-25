@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int longestIdealString(string s, int k) {
+        int n = s.size();
+        vector<int> dp(26, 0);
+        
+        for (char c : s) {
+            int idx = c - 'a';
+            int maxLen = 1;
+            for (int i = max(0, idx - k); i <= min(25, idx + k); ++i) {
+                maxLen = max(maxLen, dp[i] + 1); 
+            }
+            dp[idx] = maxLen;
+        }
+        
+        return *max_element(dp.begin(), dp.end());
+    }
+};
