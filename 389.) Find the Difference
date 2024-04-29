@@ -1,0 +1,21 @@
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        unordered_map<char, int> match;
+        char ans;
+        for(char c:s)
+        {
+            match[c]++;
+        }
+
+        for(char c:t)
+        {
+            if(--match[c] < 0)
+            {
+                ans = c;
+                break;
+            }
+        }
+        return ans;
+    }
+};
