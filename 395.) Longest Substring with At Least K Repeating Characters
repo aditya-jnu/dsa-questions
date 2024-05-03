@@ -1,0 +1,45 @@
+// class Solution {
+// public:
+//     int longestSubstring(string s, int k) {
+//         int size = s.size();
+//         unordered_map<char, int> count;
+//         for (char c : s) {
+//             count[c]++;
+//         }
+
+//         int ans = 0;
+//         for (auto& pair : count) {
+//             if (pair.second >= k) {
+//                 ans = ans + pair.second;
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+class Solution {
+public:
+    int longestSubstring(string s, int k) {
+        return longestSubstringHelper(s, k, 0, s.size());
+    }
+    
+    int longestSubstringHelper(string& s, int k, int start, int end) {
+        if (end - start < k) return 0;
+        
+        unordered_map<char, int> count;
+        for (int i = start; i < end; ++i) {
+            count[s[i]]++;
+        }
+        
+        for (int i = start; i < end; ++i) {
+            if (count[s[i]] < k) {
+                int left = longestSubstringHelper(s, k, start, i);
+                int right = longestSubstringHelper(s, k, i + 1, end);
+                return max(left, right);
+            }
+        }
+        
+        return end - start;
+    }
+};
+
