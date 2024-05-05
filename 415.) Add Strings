@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int carry = 0;
+        string result = "";
+        
+        reverse(num1.begin(), num1.end());
+        reverse(num2.begin(), num2.end());
+        
+        int i = 0;
+        while (i < num1.size() || i < num2.size() || carry != 0) {
+            int digit1 = (i < num1.size()) ? (num1[i] - '0') : 0;
+            int digit2 = (i < num2.size()) ? (num2[i] - '0') : 0;
+            
+            int sum = digit1 + digit2 + carry;
+            carry = sum / 10;
+            result += to_string(sum % 10);
+            
+            i++;
+        }
+        
+        reverse(result.begin(), result.end());
+        
+        return result;
+    }
+};
