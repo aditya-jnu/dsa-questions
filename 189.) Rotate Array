@@ -1,0 +1,13 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int size = nums.size();
+        vector<int> ans(size);
+        for(int i=0; i<size; i++)
+        {
+            int newIndex = (i+k)%size;
+            ans[newIndex] = nums[i];
+        }
+        nums = ans;
+    }
+};
