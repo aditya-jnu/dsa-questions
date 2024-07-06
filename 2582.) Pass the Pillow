@@ -1,0 +1,67 @@
+// class Solution {
+// public:
+//     int passThePillow(int n, int time) {
+//         int count = 0;
+//         int i = 0;
+//         while(i<n)
+//         {
+//             if(n>time)
+//             {
+//                 count++;
+//                 if(count==time)
+//                 {
+//                     return count + 1;
+//                 }
+//                 i++;
+//             }
+
+//             else if(n==time)
+//             {
+//                 count++;
+//                 if(count==time)
+//                 {
+//                     return count - 1;
+//                 }
+//                 i++;
+//             }
+
+//             else if(n<time)
+//             {
+//                 count++;
+//                 if(count<n)
+//                 {
+//                     i++;
+//                 }
+//                 else
+//                 {
+//                     i--;
+//                 }
+//                 if(count==time)
+//                 {
+//                     return i+1;
+//                 }
+//             }
+//         }
+//         return count;
+//     }
+// };
+
+class Solution {
+public:
+    int passThePillow(int n, int time) {
+        int position = 0;
+        int direction = 1; 
+
+        for (int t = 0; t < time; ++t) {
+            position += direction;
+
+            if (position == n - 1) {
+                direction = -1; 
+            } else if (position == 0) {
+                direction = 1;
+            }
+        }
+
+        return position + 1;
+    }
+};
