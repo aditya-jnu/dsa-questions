@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int minimumDeletions(string s) {
+        int countA = 0, deletions = 0;
+        
+        for (char c : s) {
+            if (c == 'a') {
+                countA++;
+            }
+        }
+        
+        int minDeletions = countA;
+        for (char c : s) {
+            if (c == 'a') {
+                countA--;
+            } else {
+                deletions++;
+            }
+            minDeletions = min(minDeletions, deletions + countA);
+        }
+        
+        return minDeletions;
+    }
+};
