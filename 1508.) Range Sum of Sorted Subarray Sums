@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int rangeSum(vector<int>& nums, int n, int left, int right) {
+        vector<long long>tempVector;
+        for(int i=0; i<n; i++)
+        {
+            long long sum = 0;
+            for(int j=i; j<n; j++)
+            {
+                sum = sum + nums[j]; 
+                tempVector.push_back(sum);
+            }
+        }
+        sort(tempVector.begin(), tempVector.end());
+        long long ans = 0;
+        for(int i=left-1; i<right; i++)
+        {
+            ans = ans + tempVector[i];
+        }
+        return ans % 1000000007;
+    }
+};
