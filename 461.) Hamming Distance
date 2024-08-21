@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int binaryNum1[32];
+        int binaryNum2[32];
+        int i = 0;
+        
+        int count = 0;
+        while (x > 0 || y > 0) {
+           binaryNum1[i] = x % 2;
+           binaryNum2[i] = y % 2;
+           x = x / 2;
+           y = y / 2;
+           if(binaryNum1[i] != binaryNum2[i])
+           {
+            count++;
+           }
+           i++;
+        } 
+        return count;
+    }
+};
