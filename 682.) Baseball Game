@@ -1,0 +1,62 @@
+// class Solution {
+// public:
+//     int calPoints(vector<string>& operations) {
+//         stack<string>ans;
+//         int size = operations.size();
+
+//         for(int i=0; i<size; i++)
+//         {
+//             if(operations[i]== int)
+//             {
+//                 ans.push(x);
+//             }
+//             else if('+')
+//             {
+//                 ans.push(ans[i-1] + ans[i-2]);
+//             }
+//             else if('D')
+//             {
+//                 ans.push(ans[i-1]*2);
+//             }
+//             else if('C')
+//             {
+//                 ans.pop();
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+
+class Solution {
+public:
+    int calPoints(vector<string>& operations) {
+        stack<int> ans;
+        
+        for (const string& op : operations) {
+            if (op == "+") {
+                int top = ans.top();
+                ans.pop();
+                int newTop = top + ans.top();
+                ans.push(top);
+                ans.push(newTop);
+            } 
+            else if (op == "D") {
+                ans.push(2 * ans.top());
+            } 
+            else if (op == "C") {
+                ans.pop();
+            } 
+            else {
+                ans.push(stoi(op));
+            }
+        }
+        
+        int result = 0;
+        while (!ans.empty()) {
+            result += ans.top();
+            ans.pop();
+        }
+        return result;
+    }
+};
