@@ -1,0 +1,59 @@
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if (!head || !head->next || k == 0) {
+            return head;
+        }
+
+        int size = 0;
+        ListNode* temp = head;
+        while (temp) {
+            size++;
+            temp = temp->next;
+        }
+
+        k = k % size;
+        if (k == 0) {
+            return head;
+        }
+
+        stack<ListNode*> stk;
+        temp = head;
+        while (temp) {
+            stk.push(temp);
+            temp = temp->next;
+        }
+
+        stack<ListNode*> revStk;
+        for (int i = 0; i < k; i++) {
+            revStk.push(stk.top());
+            stk.pop();
+        }
+
+        ListNode* newHead = revStk.top();
+        revStk.pop();
+        ListNode* tail = newHead;
+
+        while (!revStk.empty()) {
+            tail->next = revStk.top();
+            revStk.pop();
+            tail = tail->next;
+        }
+
+        stack<ListNode*> origStk;
+        while (!stk.empty()) {
+            origStk.push(stk.top());
+            stk.pop();
+        }
+
+        while (!origStk.empty()) {
+            tail->next = origStk.top();
+            origStk.pop();
+            tail = tail->next;
+        }
+
+        tail->next = nullptr;
+
+        return newHead;
+    }
+};
