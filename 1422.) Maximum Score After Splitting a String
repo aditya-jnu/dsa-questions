@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int maxScore(string s) {
+        int size = s.size();
+        int maxScore = 0;
+
+        for (int i = 1; i < size; i++) {
+            int count = 0;
+
+            for (int j = 0; j < i; j++) {
+                if (s[j] == '0') {
+                    count++;
+                }
+            }
+
+            for (int j = i; j < size; j++) {
+                if (s[j] == '1') {
+                    count++;
+                }
+            }
+
+            maxScore = max(maxScore, count);
+        }
+
+        return maxScore;
+    }
+};
