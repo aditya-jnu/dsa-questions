@@ -1,0 +1,42 @@
+// class Solution {
+// public:
+//     bool isArraySpecial(vector<int>& nums) {
+//         int size = nums.size();
+//         if(size==1){
+//             return true;
+//         }
+//         int i=0;
+//         while(i<size)
+//         {
+//             if(nums[i]%2==0 || nums[i+1]%2!=0){
+//                 if(i==size-1){
+//                     return true;
+//                 }
+//             }
+//             else if(nums[i]%2!=0 || nums[i+1]%2==0){
+//                 if(i==size-1){
+//                     return true;
+//                 }
+//             }
+//             i = i+2;
+//         }
+//         return false;
+//     }
+// };
+
+class Solution {
+public:
+    bool isArraySpecial(vector<int>& nums) {
+        int size = nums.size();
+        if(size==1){
+            return true;
+        }
+        for(int i=0; i<size-1; i++)
+        {
+            if(nums[i]%2 == nums[i+1]%2){
+                return false;
+            }
+        }
+        return true;
+    }
+};
