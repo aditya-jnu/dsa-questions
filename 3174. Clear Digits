@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string clearDigits(string s) {
+        stack<char> result;
+
+        for(char ch : s) {
+            if (!isdigit(ch)) {
+                result.push(ch);
+            } else if (!result.empty()) {
+                result.pop();
+            }
+        }
+        string ans;
+        while (!result.empty()) {
+            ans = ans + result.top();
+            result.pop();
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
