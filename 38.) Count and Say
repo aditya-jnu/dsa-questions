@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string countAndSay(int n){
+        string pre = "1";
+        for(int i = 1 ; i < n; i++){
+            string a = pre;
+            string newA = "";
+            for(int i = 0 ; i < a.size() ;){
+                int count = 0;
+                int j = i;
+                while(j < a.size() && a[i] == a[j]){
+                    count++;
+                    j++;
+                }
+                newA.push_back(count + '0');
+                newA.push_back(a[i]);
+                i = j ;
+            }
+            pre = newA;
+        }
+        return pre;
+    }
+};
