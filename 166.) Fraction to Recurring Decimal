@@ -1,0 +1,38 @@
+class Solution {
+public:
+    string fractionToDecimal(int x, int y) {
+        if (x == 0) return "0";
+
+        string res;
+        bool negative = (x < 0) ^ (y < 0);
+        if (negative) res += '-';
+
+        long long a = abs((long long)x);
+        long long b = abs((long long)y);
+
+        res += to_string(a / b);
+        long long r = a % b;
+
+        if (r == 0) return res;
+
+        res += '.';
+        string decimalPart;
+        unordered_map<long long, int> seen;
+
+        while (r != 0) {
+            if (seen.find(r) != seen.end()) {
+                int repeatStart = seen[r];
+                decimalPart.insert(repeatStart, "(");
+                decimalPart += ")";
+                break;
+            }
+
+            seen[r] = decimalPart.length();
+            r *= 10;
+            decimalPart += to_string(r / b);
+            r %= b;
+        }
+
+        return res + decimalPart;
+    }
+};
