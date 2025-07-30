@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        // int size = nums.size();
+        // int i = 0;
+        
+        // while (i < size) {
+        //     int count = 1;
+        //     int j = i + 1;
+        //     while (j < size) {
+        //         if (nums[i] == nums[j]) {
+        //             count++;
+        //         }
+        //         j++;
+        //     }
+            
+        //     if (count > size / 2) {
+        //         return nums[i];
+        //     }
+            
+        //     i++;
+        // }
+        
+        // return -1;
+
+
+methos Second --> in this method i try to impliment my hashmap concept
+
+        unordered_map<int , int> map;
+
+        for(int num: nums){
+            map[num]++;
+        }
+
+        int maximum = nums[0];
+        for(auto & pair : map){
+            if(pair.second > map[maximum]){
+                maximum = pair.first;
+            }
+        }
+        return maximum;
+    }
+};
